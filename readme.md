@@ -3417,3 +3417,100 @@ Mode=, Vid=, FolderType=Generic: These settings are either empty or set to gener
 
 Lifting state up 
  -->
+
+```
+<!-- READMEcopy.MD -->
+```
+<!-- 
+# [***ReactJS | Modern Animated Website | OCHI DESIGN | Awwwarded Website Clone***](https://youtu.be/AZXYSlxj0vU?si=XfahCFcdAW0GbAbn)
+
+[![ReactJS | Modern Animated Website | OCHI DESIGN | Awwwarded Website Clone](https://img.youtube.com/vi/AZXYSlxj0vU/hqdefault.jpg)](https://youtu.be/AZXYSlxj0vU?si=XfahCFcdAW0GbAbn)
+
+list of topics:
+
+- *Creating a modern animated website using ReactJS*
+- *Installing dependencies and setting up Tailwind CSS for the website*
+- *Setting up ReactJS app and installing extensions for development*
+- *Creating a modern animated website with different sections*
+- *Introduction to creating and importing React components*
+- *Changing the color of the navigation bar to white*
+- *Fetching a font from a website for installation*
+- *Selecting and using fonts in ReactJS*
+- *Fix navigation bar and ensure z-index for visibility*
+- *Creating and styling text structure of the website*
+- *Customizing text appearance in the website design*
+- *Creating and customizing masks in ReactJS*
+- *Styling the website elements with CSS*
+- *Creating and using icons in ReactJS*
+- *Installation process for ReactJS on Windows and Mac*
+- *Styling elements and managing layout*
+- *Adjusting rounded curved angles and values for proper display*
+- *Creating a rough sea effect with green section*
+- *Styling adjustments and animations discussed*
+- *Implementing rounded corners and animation in the website design*
+- *Development process of creating a modern animated website*
+- *Creating a modern animated website using ReactJS*
+- *Creating and customizing design elements in the website using ReactJS*
+- *Fixing the bottom line on the website*
+- *Creating and styling elements using ReactJS*
+- *Creating and customizing website design elements*
+- *Discussing design elements and color choices*
+- *Adjusting elements for the layout*
+- *Learn how to create a rotating circle with transparency*
+- *Explanation of finding the angle and point on the screen*
+- *Using radians to calculate degrees and extracting mouse location for website interaction*
+- *Understanding mouse position and delta in ReactJS*
+- *Learn how to rotate elements using ReactJS*
+- *Creating and styling website components with ReactJS*
+- *Creating card div and setting dimensions*
+- *Creating card structures and applying CSS*
+- *Customizing website colors and image shapes*
+- *Positioning and styling elements using ReactJS*
+- *Adjusting colors and elements on the website*
+- *Creating animated website using ReactJS*
+- *Discussing layout configurations and styling elements*
+- *Creating and styling a logo and button in the website design*
+- *Code corrections and styling enhancements*
+- *Discussing the CSS properties flex, justify, height, and presentation*
+- *Installing and using locomotive for smooth scrolling website*
+- *Using ReactJS to create animated website*
+- *Troubleshooting and fixing an error during application runtime*
+- *Controlling scroll speed and creating a dynamic effect*
+- *Styling and animating elements using inline-block and flex*
+- *Creating hover animation using ReactJS*
+- *Discussing styling and DOM manipulation in ReactJS*
+- *Using motion and animation in ReactJS*
+- *Demonstrating animation with Frame Motion*
+
+ -->
+
+
+The command npm install (or just npm i) is used to install all the dependencies listed in a project's package.json file. Here's what it does:
+
+Installs all dependencies: It reads the package.json file to find all the packages and libraries your project depends on, then downloads and installs them into the node_modules directory.
+
+# [***Material UI***](https://mui.com/material-ui/getting-started/)
+
+`Library of React UI components`
+
+* *Material UI is an open-source React component library that implements Google's Material Design.*
+
+* *It includes a comprehensive collection of prebuilt components that are ready for use in production right out of the box*
+
+[***Installation***](https://mui.com/material-ui/getting-started/installation/)
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+```bash
+npm create vite@latest
+cd mini-project-react
+npm install
+```
+
+As of late 2021, styled-components is not compatible with server-rendered Material UI projects. 
+recommend using Emotion for SSR projects.
+
+React router DOM is a third party library
+https://github.com/hiteshchoudhary/chai-aur-react/blob/main/reactRouterNotes.md
+
