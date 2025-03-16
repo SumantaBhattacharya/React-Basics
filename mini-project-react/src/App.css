@@ -1,0 +1,84 @@
+/* In App.css */
+@font-face {
+  font-family: 'WeatherFont';
+  src: url('./assets/MwQ2bhXp1eSBqjkPKJVbtQ.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  padding: 0.1vw;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.weather-widget {
+  font-family: 'WeatherFont', sans-serif;
+}
+
+.InfoBox {
+  font-family: 'WeatherFont', sans-serif;
+  background-color: white; /* Ensure background is visible */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Align text */
+  color: black; /* Ensure text is visible */
+} 
+
+
+.weather-icon {
+  font-size: 100px;
+  text-align: center;
+} 
+
+
+.weather-data {
+  margin-top: 10px;
+  font-size: 20px;
+} 
+
+
+.weather-description {
+  margin-top: 10px;
+  font-size: 16px;
+} 
+
+.weather-temperature {
+  margin-top: 10px;
+  font-size: 36px;
+} 
+
+
+.weather-humidity {
+  margin-top: 10px;
+  font-size: 16px;
+} 
+
+
+.weather-wind {
+  margin-top: 10px;
+  font-size: 16px;
+} 
+
+.container {
+
+  position: relative;
+  width: auto; /* or specific width */
+  height: auto; /* Adjust height as needed */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
