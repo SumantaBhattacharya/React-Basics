@@ -29,3 +29,4 @@ eslint.config.js
 package-lock.json
 vite.config.js
 assets
+package.json
