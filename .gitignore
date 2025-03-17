@@ -4,9 +4,11 @@ desktop.ini
 # can we create a seperate file for tailwind like in css we use to do , i do know tailwiind is a post css 
 # Problems loading reference 'https://schemastore.azurewebsites.net/schemas/json/package.json': Unable to load schema from 'https://schemastore.azurewebsites.net/schemas/json/package.json': getaddrinfo ENOTFOUND schemastore.azurewebsites.net.(768)
 # Java Language server contributions to package.json
-
+# https://reactrouter.com/web/guides/quick-start
+# https://reactrouter.com/
 ReactFrontend_P
 desktop.ini
 ochi
 gsap.txt
 Terminal.txt
+07reactRouter
