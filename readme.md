@@ -3514,3 +3514,66 @@ recommend using Emotion for SSR projects.
 React router DOM is a third party library
 https://github.com/hiteshchoudhary/chai-aur-react/blob/main/reactRouterNotes.md
 
+https://tailwindcss.com/docs/installation/using-vite
+https://v3.tailwindcss.com/docs/guides/vite
+https://v3.tailwindcss.com/docs/installation
+
+
+https://reactrouter.com/start/modes
+https://github.com/hiteshchoudhary/chai-aur-react/tree/main/07reactRouter
+
+
+link is used in place of anchor(a) tag
+because anchor tag will reload the page
+and it will not work as a single page application
+so we use link tag to navigate to different pages
+NavLink is used to add active class to the link
+when it is clicked
+in a tag we use href to navigate to different pages
+but in link tag we use 'to' to navigate to different pages
+and in NavLink we use 'to' to navigate to different pages
+- We can customize its behavior using the following props:
+
+1. 'className': Adds a custom class to the link.
+2. 'style': Applies inline styles to the link.
+3. 'activeClassName' (Deprecated in React Router v6): Previously used to add an active class.
+4. 'activeStyle': Adds inline styles when the link is active.
+5. 'isActive': A function that allows conditional styling based on active state.
+6. 'aria-current': Used for accessibility to indicate the current page.
+
+Note: In React Router v6, 'activeClassName' and 'exact' are removed.
+Instead, we use 'className' as a function to conditionally apply active styles.
+
+Layout component is used to wrap all the components
+and it will be used in the main.jsx file
+so that we can use the header and footer in all the components
+without writing it again and again
+so we will just import the layout component in the main.jsx file
+and it will automatically include the header and footer
+in all the components
+so we don't have to write it again and again
+and it will save our time
+and it will make our code more clean and readable
+and it will also make our code more maintainable
+and it will also make our code more scalable
+and it will also make our code more reusable
+and it will also make our code more efficient
+and it will also make our code more effective
+and it will also make our code more productive
+and it will also make our code more professional
+and it will also make our code more user-friendly
+and it will also make our code more accessible
+and it will also make our code more inclusive
+
+
+PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\07reactRouter> node -v
+v20.12.2
+
+npm create vite@latest folder_name -- --template react
+code .
+
+PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter> npm list react-router-dom
+reactrouter@0.0.0 C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter
+└── react-router-dom@7.3.0
+
+https://reactrouter.com/6.28.0/start/overview#nested-routes
