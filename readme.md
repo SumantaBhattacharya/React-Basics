@@ -3577,3 +3577,15 @@ reactrouter@0.0.0 C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter
 └── react-router-dom@7.3.0
 
 https://reactrouter.com/6.28.0/start/overview#nested-routes
+
+We had to pass the prop to right side then to top component then finally to card which is actually needed it.
+
+Basically  passing a prop through multiple intermediate components just to get it where it's actually needed(Prop drilling). 
+
+Context API – If the prop is needed by multiple components at different levels, React's Context API can help avoid excessive prop drilling.
+
+Redux / Zustand – If it's global state (like user data or theme settings), a state management library can help.
+
+react-Redux
+Redux-toolkit(RTK)
+Zustand
