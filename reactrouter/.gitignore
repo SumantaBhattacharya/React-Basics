@@ -31,3 +31,6 @@ package-lock.json
 postcss.config.js
 tailwind.config.js
 assets
+
+App.jsx
+App.css
