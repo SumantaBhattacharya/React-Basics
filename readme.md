@@ -3541,6 +3541,29 @@ and in NavLink we use 'to' to navigate to different pages
 5. 'isActive': A function that allows conditional styling based on active state.
 6. 'aria-current': Used for accessibility to indicate the current page.
 
+
+# React Router Crash Course  
+
+**Topics Covered:**  
+- Basics of React Router and its usage  
+- How to start a React Router project  
+- Navigating between different components in a single-page application  
+- React Router structure and navigation bar  
+- Creating header, footer, and home components  
+- Installing different components inside your home  
+- Dynamic routing in web applications  
+- Troubleshooting rendering issues in React Router  
+- Linking and injecting data into components  
+- Common errors in React Router  
+- Parameterizing URLs to access dynamic values  
+- Capturing dynamic data using React Router  
+- Calling APIs within React Router  
+- Passing data inside React Router  
+- Summary of React Router concepts  
+
+[![React Router Crash Course](https://img.youtube.com/vi/VJov5QWEKE4/maxresdefault.jpg)](https://youtu.be/VJov5QWEKE4)
+
+
 Note: In React Router v6, 'activeClassName' and 'exact' are removed.
 Instead, we use 'className' as a function to conditionally apply active styles.
 
