@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'FontOne';
+  src: url('./assets/fonts/file.woff2') format('woff2');
+}
+/* name */
+@font-face {
+  font-family: 'FontTwo';
+  src: url('./assets/fonts/file-1.woff2') format('woff2');
+}
+/* heading */
+@font-face {
+  font-family: 'FontThree';
+  src: url('./assets/fonts/file-2.woff2') format('woff2');
+}
+/* normal english */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: black;  
+  color: white; 
+  mix-blend-mode: difference; 
+}
+
+.text-black::selection {
+  color: #9B9B9B; 
+}
+
+.text_grey::selection {
+  color: w; 
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: black;
+  position: relative;
+}
+
+@keyframes scaleAnimation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.scale-animation {
+  animation: scaleAnimation 2s infinite ease-in-out;
+}
+
+#section2{
+  position: relative;
+  /* perspective: 50000vw; */
+}
+
+.text-full_Design{
+  /* background-color: aqua; */
+  transform-origin: 100% 70%;
+
+}
+
+/* #main{
+  perspective: 100;
+  position: relative;
+} */
+
+/* #page1{ */
+  /* background-color: #F5F5F5;
+  transform: rotateY(0deg) translateZ(0); */
+  /* animation: scaleAnimation 2s infinite ease-in-out; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('assets/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
+/* } */
+
+/* #page1-in{ */
+  /* animation: scaleAnimation 2s infinite ease-in-out;
+  transform: rotateY(0deg) translateZ(0); */
+  /* transform: rotateX(50deg) rotateY(50deg); */
+  /* perspective: 2000px; */
+/* } */
+
+/* #page1-inHeading{ */
+  /* transform: rotateX(50deg) rotateY(50deg); */
+  /* transform: rotateY(180deg); */
+/* } */
+
+/* h1 {
+  font-family: 'FontOne', sans-serif;
+}
+
+h2 {
+  font-family: 'FontTwo', sans-serif;
+}
+
+h3 {
+  font-family: 'FontThree', sans-serif;
+} */
+
+
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
