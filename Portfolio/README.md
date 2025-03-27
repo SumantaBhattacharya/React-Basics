@@ -13,6 +13,14 @@ If you are developing a production application, we recommend using TypeScript an
 
 ### ***📝 Project: Cloning Anzo Studio Website***
 
+# **Video Title:** ***Want a JOB in Tech? Create an Animated React Portfolio with Me!*** 🚀✨  
+
+[![Want a JOB in Tech? Create an Animated React Portfolio with Me!](https://img.youtube.com/vi/FWloC3al3JE/maxresdefault.jpg)](https://youtu.be/FWloC3al3JE?si=D9hTc21MLV2VSYpH)  
+
+[Want a JOB in Tech? Create an Animated React Portfolio with Me!](https://youtu.be/FWloC3al3JE?si=D9hTc21MLV2VSYpH)
+
+This video is perfect for beginners in React JS and those looking to strengthen their frontend development skills.  
+
 #### **🌐 Live Website:**  
 [Anzo Studio](https://www.anzo.studio/)  
 
@@ -57,6 +65,8 @@ src/
 ├── main.jsx
 ```
 
+`React does not allow direct access to files inside src/assets using a regular string path`
+
 ## Files
 
 ### App.css
@@ -85,52 +95,3 @@ To add a new component to the project, follow these steps:
 4. Export the new component using the `export default` statement.
 5. Import the new component in the file where you want to use it (e.g., `App.jsx`).
 6. Use the new component in the desired location within the parent component.
-
-For example, to create a new component called `Header`, follow these steps:
-
-1. Create a new file called `Header.jsx` in the `src/components/` directory.
-2. In `Header.jsx`, import React:
-
-```jsx
-import React from 'react';
-```
-
-3. Define the `Header` component:
-
-```jsx
-const Header = () => {
-  return (
-    <header className="bg-blue-500 text-white p-4">
-      <h1>My App</h1>
-    </header>
-  );
-};
-```
-
-4. Export the `Header` component:
-
-```jsx
-export default Header;
-```
-
-5. Import the `Header` component in `App.jsx`:
-
-```jsx
-import React from 'react';
-import Header from './components/Header';
-
-const App = () => {
-  return (
-    <div>
-      <Header />
-      {/* Other components */}
-    </div>
-  );
-};
-
-export default App;
-```
-
-6. Use the `Header` component in the desired location within the `App` component.
-
-Remember to add any necessary CSS styles to the `App.css` file or create a new CSS file for the new component.
