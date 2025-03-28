@@ -23,13 +23,13 @@ dist-ssr
 *.sln
 *.sw?
 
-eslint.config.js
-package.json
-vite.config.js
+# eslint.config.js
+# package.json
+# vite.config.js
 public
 package-lock.json
-postcss.config.js
-tailwind.config.js
+# postcss.config.js
+# tailwind.config.js
 assets
 notes.txt
 Untitled-2025-03-17-1947.excalidraw
