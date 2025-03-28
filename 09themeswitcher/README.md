@@ -11,6 +11,12 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
+# Context API Crash Course with 2 Projects 🚀  
+
+[![Context API Crash Course with 2 Projects](https://img.youtube.com/vi/JQVBGtZMqgU/maxresdefault.jpg)](https://youtu.be/JQVBGtZMqgU?si=IlbXQASPFOkDKrD8)  
+
+[Context API Crash Course with 2 Projects](https://youtu.be/JQVBGtZMqgU?si=IlbXQASPFOkDKrD8)
+
 ```sh
 
 PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend> npm create vite@latest
@@ -59,8 +65,6 @@ Created Tailwind CSS config file: tailwind.config.js
 Created PostCSS config file: postcss.config.js
 
 ```
-
-
 
 ## Files
 
