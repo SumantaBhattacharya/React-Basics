@@ -6,13 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-public 
 
 node_modules
 dist
 dist-ssr
 *.local
-.env
 
 # Editor directories and files
 .vscode/*
@@ -25,9 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# eslint.config.js
-# package-lock.json
-# vite.config.js
-# assets
-# package.json
-react.svg
+EULA
+TodoContext.js
+TodoContextProvider.jsx
+terminal.md
+Mr Dna NBP-FontZillion.zip
