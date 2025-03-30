@@ -6,6 +6,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+
 /* Body Styling */
 body {
   display: flex;
@@ -13,6 +19,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #f4f4f4;
+  color: black
 }
 
 

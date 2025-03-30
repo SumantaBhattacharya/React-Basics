@@ -8,6 +8,7 @@ export const ThemeContext = createContext({
 
 export const ThemeProvider = ThemeContext.Provider
 
+// useTheme has now access to useContext now we dont have to import it in multiple components
 export default function useTheme() {
     return useContext(ThemeContext); // useContext hook is used to access the context value in a function component. It returns the current context value if the context has been provided in the tree above. If the context has not been provided, it will throw an error.
 }
