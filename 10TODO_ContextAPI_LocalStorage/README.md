@@ -45,6 +45,9 @@ If you are developing a production application, we recommend using TypeScript an
 ```
 ## ***Essentials for this project***
 - [***todoContextapiNotes***](https://github.com/hiteshchoudhary/chai-aur-react/blob/main/todoContextapiNotes.md)
+- [***LocalStorageNotes***](https://www.w3schools.com/jsref/prop_win_localstorage.asp)
+- [***localStorageNotes***](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
 
 ### ***Passing data through the component tree without prop drilling is the primary puspose of the context API in React.***
 
@@ -52,12 +55,31 @@ If you are developing a production application, we recommend using TypeScript an
 
 ## ***Some Important Points***
 
-- The toggleComplete function would typically take the id of the todo item as its parameter. This allows the function to identify which todo item's completed status needs to be toggled (i.e., switched between true and false).
+- ***The toggleComplete function would typically take the id of the todo item as its parameter. This allows the function to identify which todo item's completed status needs to be toggled (i.e., switched between true and false).***
 
--  Using default export allows you to import the module with any name in other files, providing flexibility.
+-  ***Using default export allows you to import the module with any name in other files, providing flexibility.***
 
 - This is useful when the file exports only one main thing, like a context in this case. It simplifies the import syntax and makes it clear that this is the primary export of the file.
   -However, if you use a named export (e.g., export const TodoContext_api), you must import it with the exact name:
 
 - Use default when the file has a single primary export, and use named when there are multiple exports.
 
+- ***Direct Access to localStorage:***
+   - ***You can directly access localStorage in the browser environment (e.g., in a React app running on the client side). This is because localStorage is part of the browser's window object, which is available in client-side rendering.***
+
+  - ***Server-Side Rendering (SSR):***
+    -  ***If you're using server-side rendering (e.g., with frameworks like Next.js), localStorage is not available during the server-side rendering phase because it runs in a Node.js environment, where the window object does not exist.***
+
+The values stored in localStorage are always stored as strings, regardless of the data type you save. This is because localStorage is designed to store key-value pairs where both the key and value are strings.
+
+When you save an object or array to localStorage, you need to convert it to a string using JSON.stringify(). Similarly, when you retrieve the data, you need to parse it back into its original format (e.g., an object or array) using JSON.parse().
+
+Why is it stored as a string?
+localStorage is part of the Web Storage API, which only supports string data. This limitation ensures simplicity and compatibility across different browsers.
+
+Key Points:
+`JSON.stringify():` *Converts objects or arrays into a string format for storage.*
+`JSON.parse():` *Converts the string back into an object or array for use in your application.*
+**Default Behavior**: *If localStorage.getItem() returns null (e.g., if the key doesn't exist), you should handle it gracefully (e.g., by using a default value like an empty array).*
+
+Always call the custom hook with parentheses:
