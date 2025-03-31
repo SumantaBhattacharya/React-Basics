@@ -3659,3 +3659,26 @@ Here’s the directory structure in Markdown format:
 ├── 📄 Terminal.txt (4850 bytes)
 ```
 `This Markdown format maintains clarity and hierarchy while preserving file sizes where applicable.`
+
+
+- Use default when the file has a single primary export, and use named when there are multiple exports.
+
+- ***Direct Access to localStorage:***
+   - ***You can directly access localStorage in the browser environment (e.g., in a React app running on the client side). This is because localStorage is part of the browser's window object, which is available in client-side rendering.***
+
+  - ***Server-Side Rendering (SSR):***
+    -  ***If you're using server-side rendering (e.g., with frameworks like Next.js), localStorage is not available during the server-side rendering phase because it runs in a Node.js environment, where the window object does not exist.***
+
+The values stored in localStorage are always stored as strings, regardless of the data type you save. This is because localStorage is designed to store key-value pairs where both the key and value are strings.
+
+When you save an object or array to localStorage, you need to convert it to a string using JSON.stringify(). Similarly, when you retrieve the data, you need to parse it back into its original format (e.g., an object or array) using JSON.parse().
+
+Why is it stored as a string?
+localStorage is part of the Web Storage API, which only supports string data. This limitation ensures simplicity and compatibility across different browsers.
+
+Key Points:
+`JSON.stringify():` *Converts objects or arrays into a string format for storage.*
+`JSON.parse():` *Converts the string back into an object or array for use in your application.*
+**Default Behavior**: *If localStorage.getItem() returns null (e.g., if the key doesn't exist), you should handle it gracefully (e.g., by using a default value like an empty array).*
+
+Always call the custom hook with parentheses:
