@@ -3615,52 +3615,6 @@ Zustand
 
 Here’s the directory structure in Markdown format:  
 
-```md
-# React-Frontend Directory Structure
-
-## Root Directory (`React-Frontend`)
-```
-```
-📂 React-Frontend
-├── 📂 03tailwindprops
-├── 📂 04bgChanger
-├── 📂 05passwordGenrator
-├── 📂 06CurrencyConverter
-├── 📂 07reactRouter
-├── 📂 08minicontext
-│   ├── 📂 node_modules
-│   ├── 📂 public
-│   ├── 📂 src
-│   │   ├── 📂 assets
-│   │   ├── 📂 components
-│   │   │   ├── 📄 Login.jsx (1811 bytes)
-│   │   │   ├── 📄 Profile.jsx (197 bytes)
-│   │   ├── 📂 context
-│   │   ├── 📄 App.css (736 bytes)
-│   │   ├── 📄 App.jsx (468 bytes)
-│   │   ├── 📄 index.css (1170 bytes)
-│   │   ├── 📄 main.jsx (229 bytes)
-│   ├── 📄 .gitignore (444 bytes)
-│   ├── 📄 eslint.config.js (844 bytes)
-│   ├── 📄 image.png (124117 bytes)
-│   ├── 📄 index.html (361 bytes)
-│   ├── 📄 notes.txt (16518 bytes)
-│   ├── 📄 package-lock.json (92983 bytes)
-│   ├── 📄 package.json (611 bytes)
-│   ├── 📄 README.md (2708 bytes)
-│   ├── 📄 Untitled-2025-03-17-1947.excalidraw (25021 bytes)
-│   ├── 📄 vite.config.js (161 bytes)
-├── 📂 mini-project-react
-├── 📂 ochi
-├── 📂 reactrouter
-├── 📄 .gitignore (609 bytes)
-├── 📄 gsap.txt (494 bytes)
-├── 📄 readme.md (125156 bytes)
-├── 📄 Terminal.txt (4850 bytes)
-```
-`This Markdown format maintains clarity and hierarchy while preserving file sizes where applicable.`
-
-
 - Use default when the file has a single primary export, and use named when there are multiple exports.
 
 - ***Direct Access to localStorage:***
@@ -3682,3 +3636,7 @@ Key Points:
 **Default Behavior**: *If localStorage.getItem() returns null (e.g., if the key doesn't exist), you should handle it gracefully (e.g., by using a default value like an empty array).*
 
 Always call the custom hook with parentheses:
+
+# Quick React Practice Task | Docs Mini App | React | Framer Motion
+
+[![Quick React Practice Task | Docs Mini App | React | Framer Motion](https://img.youtube.com/vi/syHGmY75pfs/hqdefault.jpg)](https://youtu.be/syHGmY75pfs?si=CeN6vdyXu21mAHq9)
