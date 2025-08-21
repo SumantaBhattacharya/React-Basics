@@ -14,3 +14,6 @@ Terminal.txt
 07reactRouter
 # 07reactRouter because this was done using tailwind v4
 todo.txt
+docs/public/vite.svg
+docs/src/assets/react.svg
+docs/package-lock.json
