@@ -1687,1236 +1687,8 @@ In React, you don’t directly manipulate the DOM to add or update elements like
 */
 
 ```
-// EDIT BUTTON
-```javascript
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
-const Todo = () => {
-  let [isTodo, setTodo] = useState([
-    {
-      id: uuidv4(),
-      task: "Sample task",
-      isCompleted: false,
-    },
-  ]);
-
-  let [isNewTodo, setNewTodo] = useState("");
-  const [isEdit, setEdit] = useState(null);
-  const [isEditedTodo, setEditedTodo] = useState("");
-  
-  // State to track whether the text should be uppercase or lowercase
-  const [isToggle, setToggle] = useState(true);
-
-  let addTask = () => {
-    if (isNewTodo.trim() !== "") {
-      setTodo(() => [
-        ...isTodo,
-        { task: isNewTodo, id: uuidv4(), isCompleted: false },
-      ]);
-      setNewTodo("");
-    } else {
-      alert("You cannot add an empty task.");
-    }
-  };
-
-  const updateTodoValue = (event) => {
-    setNewTodo(event.target.value);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      addTask();
-    }
-  };
-
-  const handleDelete = (id) => {
-    setTodo((prevTodo) => prevTodo.filter((todo) => todo.id !== id));
-  };
-
-  const handleEditClick = (id, task) => {
-    setEdit(id);
-    setEditedTodo(task);
-  };
-
-  const handleEditChange = (event) => {
-    setEditedTodo(event.target.value);
-  };
-
-  const handleSaveEdit = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: isEditedTodo } : todo
-      )
-    );
-    setEdit(null);
-  };
-
-  // Function to toggle between uppercase and lowercase
-  const toggleUpperLowerCase = () => {
-    setToggle((prev) => !prev);
-  };
-
-  // Function to apply uppercase or lowercase based on the toggle state
-  const applyCase = (id, task) => {
-    if (isToggle) {
-      handleEditUpperCase(id, task);
-    } else {
-      handleEditLowerCase(id, task);
-    }
-  };
-
-  const handleEditUpperCase = (id, task) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: task.toUpperCase() } : todo
-      )
-    );
-  };
-
-  const handleEditLowerCase = (id, task) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: task.toLowerCase() } : todo
-      )
-    );
-  };
-
-  const handleEditUpperCaseAll = () => {
-    setTodo((prevTodo) =>
-      prevTodo.map((item) => ({
-        ...item,
-        task: isToggle ? item.task.toUpperCase() : item.task.toLowerCase(),
-      }))
-    );
-  };
-
-  return (
-    <div
-      className="Todo"
-      style={{
-        maxWidth: "600px",
-        margin: "20px auto",
-        padding: "20px",
-        backgroundColor: "#f5f5f5",
-        borderRadius: "8px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        fontFamily: "'Dancing Script', cursive",
-      }}
-    >
-      <div>
-        <h3
-          style={{
-            fontSize: "1.8rem",
-            fontStyle: "italic",
-            color: "#333",
-            marginBottom: "15px",
-          }}
-        >
-          TODO:-
-        </h3>
-        <input
-          placeholder="Add a task"
-          type="text"
-          value={isNewTodo}
-          onChange={updateTodoValue}
-          onKeyDown={handleKeyPress}
-          style={{
-            padding: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontSize: "1rem",
-            width: "100%",
-            boxSizing: "border-box",
-            marginBottom: "15px",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-        />
-
-        <br />
-        <button
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem",
-            transition: "background-color 0.3s ease",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-          onClick={addTask}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
-        >
-          ADD TASK
-        </button>
-
-        <button
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#17a2b8",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem",
-            transition: "background-color 0.3s ease",
-            fontFamily: "'Dancing Script', cursive",
-            fontWeight: 600,
-            marginTop: "10px"
-          }}
-          onMouseOver={(e) =>
-            (e.target.style.backgroundColor = "#138496")
-          }
-          onMouseOut={(e) =>
-            (e.target.style.backgroundColor = "#17a2b8")
-          }
-          onClick={toggleUpperLowerCase}
-        >
-          Toggle Case: {isToggle ? "Uppercase" : "Lowercase"}
-        </button>
-
-        <hr />
-      </div>
-
-      <div>
-        <h4
-          style={{
-            fontSize: "1.2rem",
-            marginBottom: "10px",
-          }}
-        >
-          TODO LISTS THESE ITEMS
-        </h4>
-        <button
-          style={{
-            marginBottom: "15px",
-            padding: "10px 20px",
-            backgroundColor: "#17a2b8",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem",
-            transition: "background-color 0.3s ease",
-            fontFamily: "'Dancing Script', cursive",
-            fontWeight: 600,
-          }}
-          onMouseOver={(e) =>
-            (e.target.style.backgroundColor = "#138496")
-          }
-          onMouseOut={(e) =>
-            (e.target.style.backgroundColor = "#17a2b8")
-          }
-          onClick={handleEditUpperCaseAll}
-        >
-          Apply Case to All
-        </button>
-        <ul>
-          {isTodo.map((item) => (
-            <li key={item.id} style={{ marginBottom: "5px" }}>
-              {isEdit === item.id ? (
-                <>
-                  <input
-                    type="text"
-                    value={isEditedTodo}
-                    onChange={handleEditChange}
-                    style={{
-                      padding: "5px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      fontSize: "1rem",
-                      width: "40%",
-                      boxSizing: "border-box",
-                      marginBottom: "5px",
-                      fontFamily: "'Dancing Script', cursive",
-                    }}
-                  />
-
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "green",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => handleSaveEdit(item.id)}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "darkgreen")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "green")
-                    }
-                    onFocus={(e) =>
-                      (e.target.style.boxShadow = "0 0 5px rgba(0,0,0,0.2)")
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)")
-                    }
-                  >
-                    Save
-                  </button>
-                </>
-              ) : (
-                <>
-                  {item.task}
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#dc3545",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onClick={() => handleDelete(item.id)}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#c82333")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#dc3545")
-                    }
-                  >
-                    Delete
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#ffc107",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onClick={() => handleEditClick(item.id, item.task)}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#e0a800")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#ffc107")
-                    }
-                  >
-                    Edit
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#007bff",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onClick={() => applyCase(item.id, item.task)}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#0056b3")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#007bff")
-                    }
-                  >
-                    {isToggle ? "Uppercase" : "Lowercase"}
-                  </button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-export default Todo;
-
-```
-with out styling for better readability
-```javascript
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const Todo = () => {
-  const [todos, setTodos] = useState([
-    { id: uuidv4(), task: "Sample task", isCompleted: false },
-  ]);
-  const [newTodo, setNewTodo] = useState("");
-  const [editId, setEditId] = useState(null);
-  const [editedTodo, setEditedTodo] = useState("");
-  const [isToggle, setToggle] = useState(true);
-
-  const addTask = () => {
-    if (newTodo.trim() !== "") {
-      setTodos([...todos, { task: newTodo, id: uuidv4(), isCompleted: false }]);
-      setNewTodo("");
-    } else {
-      alert("You cannot add an empty task.");
-    }
-  };
-
-  const handleEditClick = (id, task) => {
-    setEditId(id);
-    setEditedTodo(task);
-  };
-
-  const handleSaveEdit = (id) => {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, task: editedTodo } : todo)));
-    setEditId(null);
-  };
-
-  const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const toggleUpperLowerCase = () => {
-    setToggle((prev) => !prev);
-  };
-
-  const applyCase = (id, task) => {
-    if (isToggle) {
-      setTodos(todos.map((todo) => (todo.id === id ? { ...todo, task: task.toUpperCase() } : todo)));
-    } else {
-      setTodos(todos.map((todo) => (todo.id === id ? { ...todo, task: task.toLowerCase() } : todo)));
-    }
-  };
-
-  const handleEditUpperCaseAll = () => {
-    setTodos(todos.map((item) => ({
-      ...item,
-      task: isToggle ? item.task.toUpperCase() : item.task.toLowerCase(),
-    })));
-  };
-
-  return (
-    <div>
-      <h3>TODO:</h3>
-      <input
-        placeholder="Add a task"
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && addTask()}
-      />
-      <button onClick={addTask}>ADD TASK</button>
-      <button onClick={toggleUpperLowerCase}>
-        Toggle Case: {isToggle ? "Uppercase" : "Lowercase"}
-      </button>
-      <button onClick={handleEditUpperCaseAll}>
-        Apply Case to All
-      </button>
-      <ul>
-        {todos.map((item) => (
-          <li key={item.id}>
-            {editId === item.id ? (
-              <>
-                <input
-                  type="text"
-                  value={editedTodo}
-                  onChange={(e) => setEditedTodo(e.target.value)}
-                />
-                <button onClick={() => handleSaveEdit(item.id)}>Save</button>
-              </>
-            ) : (
-              <>
-                {item.task}
-                <button onClick={() => handleDelete(item.id)}>Delete</button>
-                <button onClick={() => handleEditClick(item.id, item.task)}>Edit</button>
-                <button onClick={() => applyCase(item.id, item.task)}>
-                  {isToggle ? "Uppercase" : "Lowercase"}
-                </button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default Todo;
-
-```
-Same code with styling
-```javascript
-// imr - import React from 'react';
-// imdr - import ReactDOM from 'react-dom';
-// control + shift + x
-// rafce
-import React from "react";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const Todo = () => {
-  // let [isTodo, setTodo] = useState(["sameple task"]);
-  let [isTodo, setTodo] = useState([
-    {
-      id: uuidv4(), //default
-      task: "Sample task",
-      isCompleted: false,
-    },
-  ]);
-
-  let [isNewTodo, setNewTodo] = useState("");
-
-  // State to track which task is being edited
-  const [isEdit, setEdit] = useState(null);
-  // State to hold the new value while editing
-  const [isEditedTodo, setEditedTodo] = useState("");
-
-  const [isToggle, setToggle] = useState(false);
-
-  let addTask = () => {
-    if (isNewTodo.trim() !== "") {
-      setTodo(() => {
-        return [
-          ...isTodo,
-          { task: isNewTodo, id: uuidv4(), isCompleted: false },
-        ];
-      });
-      setNewTodo("");
-    } else {
-      alert("You cannot add an empty task.");
-    }
-  };
-
-  const updateTodoValue = (event) => {
-    setNewTodo(event.target.value);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      addTask();
-    }
-  };
-
-  const handleDelete = (id) => {
-    // item.id
-    // setTodo(isTodo.filter(item => item.id !== id));
-    setTodo((prevTodo) => prevTodo.filter((prevTodo) => prevTodo.id !== id));
-  };
-
-  // const [isEdit, setEdit] = useState(null) // State to track which task is being edited
-  // const [isEditedTodo, setEditedTodo] = useState("") // State to hold the new value while editing
-
-  // onClick={() => handleEditClick(item.id, item.task)}
-  const handleEditClick = (id, task) => {
-    setEdit(id);
-    setEditedTodo(task); // Set the input value to the current task
-  };
-
-  // onChange={handleEditChange}
-  const handleEditChange = (event) => {
-    setEditedTodo(() => event.target.value);
-  };
-
-  // <button onClick={() => handleSaveEdit(item.id)}>Save</button>
-  // Function to save the edited task
-  const handleSaveEdit = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: isEditedTodo } : todo
-      )
-    );
-    setEdit(null); // Exit edit mode
-  };
-
-  // onClick={()=> handleEditUpperCase(item.id, item.task)}
-  // const handleEditUpperCase = (id)=>{
-  // setTodo((prevTodo) =>
-  //   prevTodo.map((todo) =>
-  //     todo.id === id? {...todo, task: todo.task.toUpperCase() } : todo
-  //   )
-  // );
-  // }
-
-  const handleEditUpperCase = (id, task) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: task.toUpperCase() } : todo
-      )
-    );
-  };
-
-  const handleEditLowerCase = (id, task) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: task.toLowerCase() } : todo
-      )
-    );
-  };
-
-  /*const handleEditUpperCase = (id)=>{
-    setTodo((prevTodo)=>{
-      return prevTodo.map((todo)=>{
-        if(todo.id === id){
-          return {...todo, task: todo.task.toUpperCase() }
-        }
-        return todo
-      })
-    })
-  }*/
-
-  /*const handleEditUpperCase = (id)=>{
-    setTodo((prevTodo)=>{
-      return prevTodo.map((todo)=>{
-        if(todo.id === id){
-          return {...todo, task: todo.task.toUpperCase() }
-        }else{
-        return todo
-       }
-      })
-    })
-  }*/
-
-  const handleEditUpperCaseAll = () => {
-    setTodo((prevTodo) =>
-      prevTodo.map((item) => ({ ...item, task: item.task.toUpperCase() }))
-    );
-  };
-
-  // const [isToggle,setToggle] = useState(false)
-
-  // const ToggleUpperLowerCase= ()=>{
-  //   setToggle(!isToggle)
-  // }
-
-  const ToggleUpperLowerCase = () => {
-    setToggle((prevToggle) => {
-      return !prevToggle;
-    });
-  };
-
-  /*const ToggleUpperLowerCase= ()=>{
-    setToggle((prevToggle)=> !prevToggle)
-  }*/
-
-  /*
-  const isUporLow = ()=>{
-    return isToggle? handleEditUpperCase : handleEditLowerCase
-  }
-  */
-
-  /*
-  const isUporLow = (id) => {
-    setTodo((prevTodo) => {
-      prevTodo.map((todo) => {
-        todo.id === id
-          ? {
-              ...todo,
-              task: isToggle
-                ? todo.task.toUpperCase()
-                : todo.task.toLowerCase(),
-            }
-          : todo;
-      });
-    });
-  };
-
-Issues:Missing Return: The map function needs to return a new array. In this version, the return value of map is not being used. 
-*/
-
-  const isUporLow = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id
-          ? {
-              ...todo,
-              task: isToggle
-                ? todo.task.toUpperCase()
-                : todo.task.toLowerCase(),
-            }
-          : todo
-      )
-    );
-  };
-  
-
-  /*const isUporLow = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id
-          ? { ...todo, task: isToggle ? todo.task.toUpperCase() : todo.task.toLowerCase() }
-          : todo
-      )
-    );
-  };*/
-
-  /*const applyCase = (id, task) => {
-    if (isToggle) {
-      setTodo(
-        isToggle.map((todo) =>
-          todo.id === id ? { ...todo, task: task.toUpperCase() } : todo
-        )
-      );
-    } else {
-      setTodo(
-        isToggle.map((todo) =>
-          todo.id === id ? { ...todo, task: task.toLowerCase() } : todo
-        )
-      );
-    }
-  };*/
-
-  return (
-    <div
-      className="Todo"
-      style={{
-        maxWidth: "600px",
-        margin: "20px auto",
-        padding: "20px",
-        backgroundColor: "#f5f5f5",
-        borderRadius: "8px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        fontFamily: "'Dancing Script', cursive", // Custom Italic Font
-      }}
-    >
-      <div>
-        <h3
-          style={{
-            fontSize: "1.8rem",
-            fontStyle: "italic",
-            color: "#333",
-            marginBottom: "15px",
-          }}
-        >
-          TODO:-
-        </h3>
-        <input
-          placeholder="Add a task"
-          type="text"
-          value={isNewTodo}
-          onChange={updateTodoValue}
-          onKeyDown={handleKeyPress}
-          style={{
-            padding: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontSize: "1rem",
-            width: "100%",
-            boxSizing: "border-box",
-            marginBottom: "15px",
-            fontFamily: "'Dancing Script', cursive", // Matching the font from the button
-          }}
-        />
-
-        <br />
-        <button
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem",
-            transition: "background-color 0.3s ease",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-          onClick={addTask} //we cant have onClick twice in a tag
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
-        >
-          ADD TASK
-        </button>
-
-        <hr />
-      </div>
-
-      <div>
-        <h4
-          style={{
-            fontSize: "1.2rem",
-            marginBottom: "10px",
-          }}
-        >
-          TODO LISTS THESE ITEMS
-        </h4>
-        <ul>
-          {isTodo.map((item) => (
-            <li key={item.id} style={{ marginBottom: "5px" }}>
-              {isEdit === item.id ? (
-                <>
-                  <input
-                    type="text"
-                    value={isEditedTodo}
-                    // onChange={(e) => setEditedTodo(e.target.value)}
-                    onChange={handleEditChange}
-                    style={{
-                      padding: "5px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      fontSize: "1rem",
-                      width: "40%",
-                      boxSizing: "border-box",
-                      marginBottom: "5px",
-                      fontFamily: "'Dancing Script', cursive",
-                    }}
-                  />
-
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "green",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => handleSaveEdit(item.id)}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "darkgreen")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "green")
-                    }
-                    onFocus={(e) =>
-                      (e.target.style.boxShadow = "0 0 5px rgba(0,0,0,0.2)")
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)")
-                    }
-                  >
-                    Save
-                  </button>
-                </>
-              ) : (
-                <>
-                  {item.task}
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#dc3545",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#c82333")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#dc3545")
-                    }
-                    onClick={() => handleDelete(item.id)}
-                    onFocus={(e) =>
-                      (e.target.style.boxShadow = "0 0 5px rgba(0,0,0,0.2)")
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)")
-                    }
-                    // if we convert it into arrow function then () => then this function will not call directly
-                    // forget the _ and i is the index iif the index mattches with the existing elemenet then dont create a new array basicallt this filter method everytime it creates a new array with the following elements and rerender the state
-                  >
-                    X
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#ffc107",
-                      color: "black",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#e0a800")
-                    }
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#ffc107")
-                    }
-                    onClick={() => handleEditClick(item.id, item.task)}
-                    onFocus={(e) =>
-                      (e.target.style.boxShadow = "0 0 5px rgba(0,0,0,0.2)")
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)")
-                    }
-                  >
-                    Edit
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#17a2b8", // Change color as desired
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition:
-                        "background-color 0.3s ease, box-shadow 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#138496")
-                    } // Darker shade on hover
-                    onMouseOut={(e) =>
-                      (e.target.style.backgroundColor = "#17a2b8")
-                    } // Original color
-                    onFocus={(e) =>
-                      (e.target.style.boxShadow = "0 0 5px rgba(0,0,0,0.2)")
-                    }
-                    onBlur={(e) =>
-                      (e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)")
-                    }
-                    onClick={() => {
-                      isUporLow(item.id);
-                      ToggleUpperLowerCase();  // Toggle case when the button is clicked
-                    }}
-                    
-                  >
-                    {isToggle ? "Uppercase" : "Lowercase"}
-                    
-                  </button>
-                  
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-```
-export default Todo;
-a problem is that when we update a list to either lowercase or uppercase then all the buttons for the rest or remaining of the list buttons get changed in to case if the other list is already lowecase the then we have to click twice to the list item uppercase
-Modify the toggle logic to affect only the clicked task without resetting the state for the others.
-
-```javascript
-let [isTodo, setTodo] = useState([
-  {
-    id: uuidv4(),
-    task: "Sample task",
-    isCompleted: false,
-    toggleCase: false, // Add this to each task
-  },
-]);
-```
-`toggleCase: false, // Add this to each task`
-```javascript
-const isUporLow = (id) => {
-  setTodo((prevTodo) =>
-    prevTodo.map((todo) =>
-      todo.id === id
-        ? {
-            ...todo,
-            task: todo.toggleCase
-              ? todo.task.toUpperCase()
-              : todo.task.toLowerCase(),
-            toggleCase: !todo.toggleCase, // Toggle the state for this task
-          }
-        : todo
-    )
-  );
-};
-```
-`toggleCase: !todo.toggleCase, // Toggle the state for this task`
-
-```javascript
-<button
-  onClick={() => isUporLow(item.id)}
->
-  {item.toggleCase ? "Uppercase" : "Lowercase"}
-</button>
-```
-`{item.toggleCase ? "Uppercase" : "Lowercase"}`
-
-```javascript
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const Todo = () => {
-  let [isTodo, setTodo] = useState([
-    {
-      id: uuidv4(),
-      task: "Sample task",
-      isCompleted: false,
-      toggleCase: false, // New state to track case for each task
-    },
-  ]);
-
-  let [isNewTodo, setNewTodo] = useState("");
-  const [isEdit, setEdit] = useState(null);
-  const [isEditedTodo, setEditedTodo] = useState("");
-
-  let addTask = () => {
-    if (isNewTodo.trim() !== "") {
-      setTodo(() => {
-        return [
-          ...isTodo,
-          { task: isNewTodo, id: uuidv4(), isCompleted: false, toggleCase: false },
-        ];
-      });
-      setNewTodo("");
-    } else {
-      alert("You cannot add an empty task.");
-    }
-  };
-
-  const updateTodoValue = (event) => {
-    setNewTodo(event.target.value);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      addTask();
-    }
-  };
-
-  const handleDelete = (id) => {
-    setTodo((prevTodo) => prevTodo.filter((prevTodo) => prevTodo.id !== id));
-  };
-
-  const handleEditClick = (id, task) => {
-    setEdit(id);
-    setEditedTodo(task);
-  };
-
-  const handleEditChange = (event) => {
-    setEditedTodo(event.target.value);
-  };
-
-  const handleSaveEdit = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id ? { ...todo, task: isEditedTodo } : todo
-      )
-    );
-    setEdit(null);
-  };
-
-  // Independent toggle for uppercase/lowercase for each task
-  const toggleCaseForTask = (id) => {
-    setTodo((prevTodo) =>
-      prevTodo.map((todo) =>
-        todo.id === id
-          ? {
-              ...todo,
-              task: todo.toggleCase
-                ? todo.task.toLowerCase()
-                : todo.task.toUpperCase(),
-              toggleCase: !todo.toggleCase,
-            }
-          : todo
-      )
-    );
-  };
-
-  return (
-    <div
-      className="Todo"
-      style={{
-        maxWidth: "600px",
-        margin: "20px auto",
-        padding: "20px",
-        backgroundColor: "#f5f5f5",
-        borderRadius: "8px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        fontFamily: "'Dancing Script', cursive",
-      }}
-    >
-      <div>
-        <h3
-          style={{
-            fontSize: "1.8rem",
-            fontStyle: "italic",
-            color: "#333",
-            marginBottom: "15px",
-          }}
-        >
-          TODO:-
-        </h3>
-        <input
-          placeholder="Add a task"
-          type="text"
-          value={isNewTodo}
-          onChange={updateTodoValue}
-          onKeyDown={handleKeyPress}
-          style={{
-            padding: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontSize: "1rem",
-            width: "100%",
-            boxSizing: "border-box",
-            marginBottom: "15px",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-        />
-
-        <br />
-        <button
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem",
-            transition: "background-color 0.3s ease",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-          onClick={addTask}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
-        >
-          ADD TASK
-        </button>
-
-        <hr />
-      </div>
-
-      <div>
-        <h4
-          style={{
-            fontSize: "1.2rem",
-            marginBottom: "10px",
-          }}
-        >
-          TODO LISTS THESE ITEMS
-        </h4>
-        <ul>
-          {isTodo.map((item) => (
-            <li key={item.id} style={{ marginBottom: "5px" }}>
-              {isEdit === item.id ? (
-                <>
-                  <input
-                    type="text"
-                    value={isEditedTodo}
-                    onChange={handleEditChange}
-                    style={{
-                      padding: "5px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      fontSize: "1rem",
-                      width: "40%",
-                      boxSizing: "border-box",
-                      marginBottom: "5px",
-                      fontFamily: "'Dancing Script', cursive",
-                    }}
-                  />
-
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "green",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => handleSaveEdit(item.id)}
-                  >
-                    Save
-                  </button>
-                </>
-              ) : (
-                <>
-                  {item.task}
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#dc3545",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.9rem",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    X
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#ffc107",
-                      color: "black",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => handleEditClick(item.id, item.task)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    style={{
-                      marginLeft: "10px",
-                      padding: "5px 10px",
-                      backgroundColor: "#17a2b8",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      transition: "background-color 0.3s ease",
-                      fontFamily: "'Dancing Script', cursive",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => toggleCaseForTask(item.id)}
-                  >
-                    {item.toggleCase ? "Uppercase" : "Lowercase"}
-                  </button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-export default Todo;
-/*
-f you switch to managing the case state at the individual item level, the ToggleUpperLowerCase function for toggling the case globally becomes unnecessary. Each item will handle its own case toggling, so you won’t need a global toggle state.
+If you switch to managing the case state at the individual item level, the ToggleUpperLowerCase function for toggling the case globally becomes unnecessary. Each item will handle its own case toggling, so you won’t need a global toggle state.
 
 Here’s how you can simplify your component:
 
@@ -3640,3 +2412,151 @@ Always call the custom hook with parentheses:
 # Quick React Practice Task | Docs Mini App | React | Framer Motion
 
 [![Quick React Practice Task | Docs Mini App | React | Framer Motion](https://img.youtube.com/vi/syHGmY75pfs/hqdefault.jpg)](https://youtu.be/syHGmY75pfs?si=CeN6vdyXu21mAHq9)
+
+# ***`Zerodha Clone`***
+```
+- Deployment on AWS
+- Jest Unit Testing
+- Next Jest
+- WebSockets
+- socket.io
+- API Integration
+```
+
+## ***Project Overview***
+
+### 1. **Tools Required**
+- *Integrated Development Environment - VS Code*
+- *Chrome*
+- *JavaScript Runtime - Node.js*
+- *Git & GitHub*
+
+### 2. **Frontend Technologies**
+- *HTML, CSS, JS*
+- *React.js (SPA - Single Page Application)*
+- *[Bootstrap](https://getbootstrap.com/)*
+- *[FontAwesome](https://fontawesome.com/ "we be using this for the icons")*
+- *Material UI*
+
+### 3. **Backend Technologies**
+- JavaScript Runtime - Node.js
+- Express.js
+
+### 4. **Database Configuration**
+- *MongoDB (NoSQL database, unstructured data with object-style syntax)*
+
+### 5. **Testing Framework**
+- *Jest Unit Testing*
+
+### 6. **Deployment Platform**
+- *AWS (Amazon Web Services)*
+
+### 7. **GitHub Setup**
+- *Repository initialized and structured for version control*
+
+---
+
+## ***Commands & Setup***
+### ***Git Commands***
+```
+git init
+git add .
+git commit -m "Initial Setup"
+git checkout -b project-structure
+git commit -m "component structure setup"
+```
+### ***React Setup***
+```
+npx create-react-app frontend
+cd frontend
+npm start
+```
+
+---
+
+## ***Additional Notes***
+
+- File-based access ✅
+- Folder-based access ✅
+- **ZERODHA CLONE** -> 3 Subfolders
+
+#### ***Commands***:
+- `npm create vite@latest`
+- Capital letters are not allowed by npm naming conventions.
+- `npx create-react-app frontendapp`
+- `cd` (change directory)
+
+### ***Node Modules Management***
+- Node modules can be recreated using `package.json`.
+- `npm install` reads `package.json` and installs `node_modules` automatically.
+- `package-lock.json` keeps track of external dependencies.
+- `manifest.json` tracks cached data and manages stored cache memory..
+- `robots.txt` is for SEO (Search Engine Optimization) and controls indexing(tells search engines what pages to index).
+
+#### ***SEO and Web Performance***:
+- `robots.txt` tells search engines which pages to crawl.
+- Google, Bing, Yahoo first check `robots.txt` before crawling.
+- `reportWebVitals.js` collects performance stats for React apps.
+Tracks performance metrics such as:
+  - Largest Contentful Paint (LCP) - Loading performance
+  - First Input Delay (FID) - Responsiveness
+  - Cumulative Layout Shift (CLS) - Visual stability
+
+#### ***Terminal Commands:***
+- `ls`, `cd`, `mkdir`, `npm start` (local commands, do not fetch from the internet)
+- `npm docs react` (opens React’s documentation)
+
+### ***React Project Setup***
+- Keeping only `index.css` and `index.js` in `src`.
+- React project initialized with `Create React App (CRA)` automatically sets up Git.
+- `git checkout -b project-structure`
+
+---
+
+# ***Component Structure Setup***
+
+## ***Commit Details***
+* component structure setup
+
+## ***Created Files***
+
+### **Root Directory**
+- `Readme.md`
+
+### **Landing Page Components**
+- `src/landing_page/Footer.js`
+- `src/landing_page/OpenAccount.js`
+
+### **About Page Components**
+- `src/landing_page/about/AboutPage.js`
+- `src/landing_page/about/Hero.js`
+- `src/landing_page/about/Team.js`
+
+### **Home Page Components**
+- `src/landing_page/home/Awards.js`
+- `src/landing_page/home/Education.js`
+- `src/landing_page/home/Hero.js`
+- `src/landing_page/home/HomePage.js`
+- `src/landing_page/home/Navbar.js`
+- `src/landing_page/home/Pricing.js`
+- `src/landing_page/home/Stats.js`
+
+### **Pricing Page Components**
+- `src/landing_page/pricing/Brokerage.js`
+- `src/landing_page/pricing/Hero.js`
+- `src/landing_page/pricing/PricingPage.js`
+
+### **Products Page Components**
+- `src/landing_page/products/Hero.js`
+- `src/landing_page/products/LeftComponent.js`
+- `src/landing_page/products/RightComponent.js`
+- `src/landing_page/products/Universe.js`
+
+### **Sign-Up Page Components**
+- `src/landing_page/signUp/Signup.js`
+
+### **Support Page Components**
+- `src/landing_page/support/CreateTicket.js`
+- `src/landing_page/support/Hero.js`
+- `src/landing_page/support/SupportPage.js`
+
