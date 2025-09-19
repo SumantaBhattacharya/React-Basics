@@ -68,22 +68,6 @@ Example:
 
 This project is a basic setup for a React application using Tailwind CSS.
 
-## Directory Structure
-
-```
-03tailwindprops/
-├── src/
-│   ├── components/
-│   │   └── (Component files)
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── .gitignore
-├── index.html
-├── package.json
-└── README.md
-```
 ```
 # Components
 
