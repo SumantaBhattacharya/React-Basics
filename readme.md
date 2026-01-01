@@ -2361,15 +2361,15 @@ and it will also make our code more accessible
 and it will also make our code more inclusive
 
 
-PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\07reactRouter> node -v
+<!-- PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\07reactRouter> node -v
 v20.12.2
 
 npm create vite@latest folder_name -- --template react
-code .
+code . -->
 
-PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter> npm list react-router-dom
+<!-- PS C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter> npm list react-router-dom
 reactrouter@0.0.0 C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\reactrouter
-└── react-router-dom@7.3.0
+└── react-router-dom@7.3.0 -->
 
 https://reactrouter.com/6.28.0/start/overview#nested-routes
 
@@ -2560,3 +2560,17 @@ Tracks performance metrics such as:
 - `src/landing_page/support/Hero.js`
 - `src/landing_page/support/SupportPage.js`
 
+### Responsive Web Devlopment
+  - `Landscape screen` -  ***height > width*** 
+  - `Portrait screen` -  ***width > height***
+
+    - `Absolute unit` - 
+    `px` - ***fixed and doesnt scale***
+    - `Relative unit` - 
+    `em` - ***Relative to the front size of the parent.*** (*scales with the parent element*)
+    `rem` - ***Relative to the root element's font-size.*** (*scales with the root element*)
+    `%` - ***Relative to the parent element's size.***
+    - `Viewport unit` - 
+    `vw, vh` - ***1% of the viewport width, height respectively.*** (*scales with the viewport*)
+
+      - `DPR` *stands for* `Device Pixel Ratio`
