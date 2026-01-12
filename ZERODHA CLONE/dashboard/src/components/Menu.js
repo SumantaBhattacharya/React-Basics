@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
-  const [selectedMenu, setSelectedMenu] = useState(0);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-
+  const [selectedMenu, setSelectedMenu] = useState(0); // 1, 2 , 3, 4, 5 each time gets updated on handleMenuClick on onClick on the dashboard navitems
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
   };
 
   const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+    setIsProfileDropdownOpen(!isProfileDropdownOpen); // it just togelling the isProfileDropdownOpen state on onClick function
   };
 
+  // menuClass, activeMenuClass is just to highlight the menu item used as style in the className, if slected just color the nav item using the variable activeMenuClass
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
@@ -69,7 +69,7 @@ const Menu = () => {
           <li>
             <Link
               style={{ textDecoration: "none" }}
-              to="funds"
+              to="/funds"
               onClick={() => handleMenuClick(4)}
             >
               <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
@@ -81,9 +81,9 @@ const Menu = () => {
             <Link
               style={{ textDecoration: "none" }}
               to="/apps"
-              onClick={() => handleMenuClick(6)}
+              onClick={() => handleMenuClick(5)}
             >
-              <p className={selectedMenu === 6 ? activeMenuClass : menuClass}>
+              <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>
                 Apps
               </p>
             </Link>
