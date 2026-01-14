@@ -188,6 +188,16 @@ app.get("/getPositions", (req, res) => {
 
 });
 
+app.get("/allHoldings", async (req, res) => {
+  const allHoldings = await HoldingModel.find();
+  res.send(allHoldings);
+});
+
+app.get("/allPositions", async (req, res)=>{
+  const allPositions = await PositionsModel.find();
+  res.send(allPositions);
+})
+
 connectDB()
   .then(() => {
     app.on("error", (err) => {
