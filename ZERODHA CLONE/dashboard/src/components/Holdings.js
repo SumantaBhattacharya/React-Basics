@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import React, { useState} from "react";
 import { useEffect } from "react";
 
@@ -18,14 +17,16 @@ const Holdings = () => {
   }, []);*/
 
   // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  const labels = allHoldings.map((subArray) => subArray["name"]);
+  // const labels = allHoldings.map((subArray) => subArray["name"]);
+  const labels = holdings.map((subArray) => subArray["name"]);
 
   const data = {
     labels,
     datasets: [
       {
         label: "Stock Price",
-        data: allHoldings.map((stock) => stock.price),
+        // data: allHoldings.map((stock) => stock.price),
+        data: holdings.map((stock) => stock.price),
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
