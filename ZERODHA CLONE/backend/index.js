@@ -2,12 +2,15 @@ import express from "express";
 import connectDB from "./src/db/index.js";
 
 import dotenv from "dotenv";
+import cors from "cors";
 
 import HoldingModel from "./src/models/HoldingModel.js";
 import PositionsModel from "./src/models/PositionsModel.js";
+import {OrdersModel} from "./src/models/OrdersModel.js";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -189,13 +192,33 @@ app.get("/getPositions", (req, res) => {
 });
 
 app.get("/allHoldings", async (req, res) => {
-  const allHoldings = await HoldingModel.find();
-  res.send(allHoldings);
+  const allHoldings = await HoldingModel.find({});
+  res.json(allHoldings);
 });
 
 app.get("/allPositions", async (req, res)=>{
-  const allPositions = await PositionsModel.find();
-  res.send(allPositions);
+  const allPositions = await PositionsModel.find({});
+  res.json(allPositions);
+})
+
+app.post("/newOrder", async (req, res) => {
+  let newOrder = new OrdersModel(
+    {
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    }
+  ); // req.body
+
+  newOrder.save();
+
+  res.send("Order added successfully!");
+});
+
+app.get("/allOrders", async (req, res) => {
+  const allOrders = await OrdersModel.find({});  // This returns a QUERY object
+  res.json(allOrders);
 })
 
 connectDB()
