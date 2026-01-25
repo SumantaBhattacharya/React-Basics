@@ -38,18 +38,11 @@ function Hero() {
             <div className='row text-center'>
                 <div className='col-12'>
                     {/* Added img-fluid to make the image scale with the container */}
-                    <img 
-                        className='mb-5 img-fluid' 
-                        src="/Images/homeHero.png" 
-                        alt="Hero Image" 
-                        style={{ maxWidth: "100%", height: "auto" }}
+                    <img className='mb-5 img-fluid' src="/Images/homeHero.png" alt="Hero Image" style={{ maxWidth: "100%", height: "auto" }}
                     />
                 </div>
 
-                <h1 
-                    style={{ lineHeight: "1.25" }} 
-                    className="landing-heading"
-                >
+                <h1 style={{ lineHeight: "1.25" }} className="landing-heading">
                     Invest in everything
                 </h1>
 
@@ -70,28 +63,7 @@ function Hero() {
                     id="acop_link" 
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                    style={{
-                        backgroundColor: isHovered ? "#111" : "#387ed1",
-                        borderRadius: "3px",
-                        cursor: "pointer",
-                        display: "inline-block",
-                        fontSize: "19.2px",
-                        fontWeight: "500",
-                        minHeight: "45px",
-                        lineHeight: "23.04px",
-                        marginTop: "25px",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        paddingBottom: "10px",
-                        paddingLeft: "30px",
-                        paddingRight: "30px",
-                        paddingTop: "10px",
-                        textAlign: "center",
-                        textDecoration: "none",
-                        whiteSpace: "nowrap",
-                        width: "204.156px",
-                        maxWidth: "100%", // Ensures button doesn't overflow on small screens
-                        border: "none"
+                    style={{backgroundColor: isHovered ? "#111" : "#387ed1",borderRadius: "3px",cursor: "pointer",display: "inline-block",fontSize: "19.2px",fontWeight: "500",minHeight: "45px",lineHeight: "23.04px",marginTop: "25px",marginLeft: "auto",marginRight: "auto",paddingBottom: "10px",paddingLeft: "30px",paddingRight: "30px",paddingTop: "10px",textAlign: "center",textDecoration: "none",whiteSpace: "nowrap",width: "204.156px",maxWidth: "100%", // Ensures button doesn't overflow on small screensborder: "none"
                     }}
                 >
                     Sign up for free
