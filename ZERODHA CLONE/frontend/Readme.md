@@ -8,6 +8,8 @@
 - API Integration
 ```
 
+[Jest](https://jestjs.io/)
+
 ## ***Project Overview***
 
 ### 1. **Tools Required**
