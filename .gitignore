@@ -2511,5 +2511,17 @@ SCodingSchool/assets/NeueMachina-Regular_DQCmjH1st.ttf
 SCodingSchool/assets/remixicon.woff2
 ZERODHA CLONE/frontend/public/Images/image.png
 ZERODHA CLONE/frontend/public/manifest.json
-ZERODHA CLONE/dashboard/node_modules/@aashutoshrathi/word-wrap/index.d.ts
 ZERODHA CLONE/dashboard/node_modules/*
+ZERODHA CLONE/backend/node_modules/*
+ZERODHA CLONE/backend/package-lock.json
+ZERODHA CLONE/backend/.env
+redux-prac/backend/node_modules/.bin/semver.ps1
+redux-prac/backend/node_modules/*
+redux-prac/backend/node_modules/@mongodb-js/saslprep/dist/.esm-wrapper.mjs
+# redux-prac/backend/node_modules/@mongodb-js/saslprep/dist/
+redux-prac/frontend/public/logo512.png
+redux-prac/frontend/public/favicon.ico
+redux-prac/backend/.env
+redux-prac/frontend/specs.txt
+redux-prac/frontend/public/logo192.png
+redux-prac/frontend/public/referrenceApp.png
