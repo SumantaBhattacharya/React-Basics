@@ -14,6 +14,10 @@ export const findUserById = async(userId) => {
     return await User.findById(userId);
 }
 
+export const findAllUsers = async() =>{
+    return await User.find({}).select("-password -refreshToken");
+}
+
 export const removeRefreshToken =  async(userId) => {
     return await User.findByIdAndUpdate(
         userId,
@@ -38,7 +42,7 @@ export const createUser = async ({username, email, password}) =>{
 export const updateCurrentPassword = async(userId, newPassword) =>{
 
     // get the user
-    const user = User.findById(userId);
+    const user = await User.findById(userId);
     // update
     user.password = newPassword; // return await User.findByIdAndUpdate(userId, { password: hashedPassword }, { new: true });
     return await user.save({ validateBeforeSave: false });// It’s a shortcut to save only what you changed without touching unrelated validations.
