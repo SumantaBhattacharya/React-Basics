@@ -2,7 +2,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 import { registerUserValidationSchema } from "../utils/validationSchema.js";
-import { registerUser, loginUser, logoutUser, refreshAccessTokenService, changeCurrentPasswordService, updateAccountDetailsService } from "../services/auth.service.js";
+import { registerUser, loginUser, logoutUser, refreshAccessTokenService, changeCurrentPasswordService, updateAccountDetailsService, getAllUsersService } from "../services/auth.service.js";
 
 import {cookieOptions} from "../config/config.js";
 
@@ -103,6 +103,16 @@ export const getCurrentUser = asyncHandler(async (req, res) => {
     return res.status(200)
         .json(new ApiResponse(200, req.user, "Current user fetched successfully"));
 });
+
+// Get all users
+export const getAllUsers = asyncHandler(async (req, res) => {
+    const result = await getAllUsersService();
+    return res.status(200).json(new ApiResponse(
+        200, 
+        result.users,
+        result.message,
+        `Total users: ${result.totalUsers},`));
+})
 
 export const updateAccountDetails = asyncHandler(async (req, res) => {
     // takes the fields of the model from the req.body that allowed to change by the user in a de-structured way
