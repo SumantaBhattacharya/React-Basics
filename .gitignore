@@ -2525,3 +2525,5 @@ redux-prac/backend/.env
 redux-prac/frontend/specs.txt
 redux-prac/frontend/public/logo192.png
 redux-prac/frontend/public/referrenceApp.png
+redux-prac/frontend/src/logo.svg
+redux-prac/frontend/public/robots.txt

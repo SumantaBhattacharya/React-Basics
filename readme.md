@@ -2512,7 +2512,7 @@ Tracks performance metrics such as:
 - `git checkout -b project-structure`
 
 ---
-
+<!-- 
 # ***Component Structure Setup***
 
 ## ***Commit Details***
@@ -2558,7 +2558,7 @@ Tracks performance metrics such as:
 ### **Support Page Components**
 - `src/landing_page/support/CreateTicket.js`
 - `src/landing_page/support/Hero.js`
-- `src/landing_page/support/SupportPage.js`
+- `src/landing_page/support/SupportPage.js` -->
 
 ### Responsive Web Devlopment
   - `Landscape screen` -  ***height > width*** 
@@ -2598,3 +2598,10 @@ Tracks performance metrics such as:
     - `max-width`        `and` `min-width`
     
 <!-- Best content api example "C:\Users\SUDIP BHATTACHARYA\Desktop\React-Frontend\07-ui-project" -->
+
+## **YAML - A complete course for developers**
+
+[![YAML - A complete course for developers](https://img.youtube.com/vi/NaoMEy_urlI/0.jpg)](https://youtu.be/NaoMEy_urlI?si=zoqkoiNJksy0H_3B)
+
+<!-- # **_Complete YAML Course - Beginner to Advanced for DevOps and more!_**
+[![Complete YAML Course - Beginner to Advanced for DevOps and more!](https://img.youtube.com/vi/IA90BTozdow/0.jpg)](https://youtu.be/IA90BTozdow?si=eybtMuagsnxHHfzu) -->
