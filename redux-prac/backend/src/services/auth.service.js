@@ -3,13 +3,16 @@ import { findUser, createUser, findUserById, removeRefreshToken, updateCurrentPa
 import { generateAccessAndRefreshToken } from "../utils/token.js";
 import { ApiError } from "../utils/ApiError.js";
 
-export const registerUser = async ({username, email, password }) => {
+import { findAllUsers } from "../dao/user.dao.js";
 
+export const registerUser = async ({username, email, password }) => {
+    try {
     // 1. Check if user already exists
     const existedUser = await findUser({username, email}); // username: username, email: email
 
     if (existedUser) {// dont auto login here if the user exists i. Account Enumeration: Attackers can discover which emails/username are registered ii. This still reveals account existence through timing attacks
-        throw new ConflictError("User with this username or email already exists");
+        throw new ApiError(409, "User already exists");
+        // throw new ConflictError("User with this username or email already exists");
     }
 
     const newUser = await createUser({
@@ -33,13 +36,19 @@ export const registerUser = async ({username, email, password }) => {
         accessToken,
         refreshToken
     };
-
+}catch(err){
+    console.error("Register User Service Error:", err);
+    throw new ApiError(500, err?.message || "Something went wrong due to registering user");
+}
 }
 
 export const loginUser = async({email, password})=>{ // const {username, password} = req.body
 
+    console.log('Login attempt with email:', email);
+
     // got the username and password now i. fetch the user information and compare the credentions for that i.i. we need to first find the user
     const user = await findUser({email});// find the user on the basis of hes username 
+    console.log('Found user:', user ? 'Yes' : 'No');
 
     if(!user){
         throw new ConflictError("User does not exist");
@@ -128,3 +137,16 @@ export const updateAccountDetailsService = async(userId, {username, email}) => {
 
 }
 
+export const getAllUsersService = async() => {
+    const users = await findAllUsers();
+    
+    if (!users) {
+        throw new ApiError(404, "No users found");
+    }else{
+        return {
+            users, 
+            totalUsers: users.length,
+            message: "All users fetched successfully"};
+    }
+
+}
