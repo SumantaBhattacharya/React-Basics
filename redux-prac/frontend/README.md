@@ -41,6 +41,11 @@ npm i express cors cookie-parser jsonwebtoken zod axios --registry=https://regis
 <select>
 <textarea>
 ```
+
+## ***Visited links***
+[react-toastify](https://fkhadra.github.io/react-toastify/introduction/)
+
 ```
 npm i zod axios --registry=https://registry.npmjs.org --verbose --loglevel=verbose --progress=true --timing
 ```
+
